@@ -1,8 +1,5 @@
-
 import type {Request , Response} from "express"
-import { PrismaClient } from "@prisma/client/extension"
-
-const prisma = new PrismaClient()
+import { prisma } from "../lib/prisma.ts";
 
 
 export async function getFamilyMember (req:Request , res:Response){
@@ -57,7 +54,7 @@ export const updateFamilyMembers = async (req:Request , res:Response) =>{
     }
 }
 
-export const deeAllMembers = async (req:Request , res:Response) =>{
+export const deleteAllMembers = async (req:Request , res:Response) =>{
     try {
        const {id} = req.params
        await prisma.family.delete({
